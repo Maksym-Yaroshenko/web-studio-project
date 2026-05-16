@@ -26,10 +26,10 @@
               <a class="menu-link menu-link-underline link" href="./index.html">Studio</a>
             </li>
             <li class="header-menu-item">
-              <a class="menu-link link" href="">Portfolio</a>
+              <a class="menu-link link" href="./portfolio.html">Portfolio</a>
             </li>
             <li class="header-menu-item">
-              <a class="menu-link link" href="">Contacts</a>
+              <a class="menu-link link" href="./contacts.html">Contacts</a>
             </li>
           </ul>
         </nav>
@@ -727,6 +727,20 @@
             </div>
           </div>
 
+
+          <div class="review-form-wrapper">
+            <label class="review-form-label" for="service-type">Interested In</label>
+            <div class="review-form-input-wrapper">
+              <select class="review-form-input" id="service-type" name="service-type" style="padding-left: 16px;">
+                <option value="default">Select a service...</option>
+                <option value="design">UI/UX Design</option>
+                <option value="dev">Web Development</option>
+              </select>
+            </div>
+          </div>
+          <div id="dynamic-response" style="color: #4D5AE5; font-size: 12px; margin-bottom: 16px; font-weight: 500;">
+          </div>
+
           <div class="review-form-textarea-wrapper">
             <label class="review-form-label" for="user-comment">Comment</label>
             <textarea class="review-form-comment" id="user-comment" name="user-comment" placeholder="Text input"
@@ -754,5 +768,6 @@
     </div>
     <!-- ========================== /Desktop Backdrop ========================== -->
   </body>
+  <script src="./js/script.js" type="module"></script>
 
 </html>
