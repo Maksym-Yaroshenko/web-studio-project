@@ -1,0 +1,99 @@
+.widgetContainer {
+  background: #2e2f42;
+  color: #fff;
+  padding: 24px;
+  border-radius: 8px;
+  max-width: 350px;
+  margin: 24px auto;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+}
+
+.title {
+  margin-bottom: 16px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.searchForm {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.searchInput {
+  flex: 1;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #e7e9fc;
+  background: transparent;
+  color: #fff;
+  outline: none;
+  transition: border-color 250ms ease;
+}
+
+.searchInput:focus {
+  border-color: #4d5ae5;
+}
+
+.searchBtn {
+  background: #4d5ae5;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 250ms ease;
+}
+
+.searchBtn:hover:not(:disabled) {
+  background: #404bbf;
+}
+
+.searchBtn:disabled {
+  background: #8e8f99;
+  cursor: not-allowed;
+}
+
+.statusText {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.loading {
+  color: #4d5ae5;
+}
+
+.error {
+  color: #e74a3b;
+}
+
+.weatherInfo {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.cityName {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.temperature {
+  font-size: 36px;
+  font-weight: 700;
+  color: #4d5ae5;
+  margin-bottom: 8px;
+}
+
+.description {
+  text-transform: capitalize;
+  color: #8e8f99;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  font-size: 12px;
+  color: #e7e9fc;
+}

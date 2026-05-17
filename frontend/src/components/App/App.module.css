@@ -1,0 +1,43 @@
+.mainContent {
+  min-height: calc(
+    100vh - 72px - 100px
+  ); /* Динамічний розрахунок висоти під контент */
+}
+
+.pageTitle {
+  text-align: center;
+  color: var(--NAVY-BLUE);
+  margin-bottom: 32px;
+  font-size: 36px;
+  line-height: 1.11;
+  letter-spacing: 0.02em;
+}
+
+.pageDescription {
+  text-align: center;
+  color: var(--SLATE);
+  margin-top: 16px;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+
+.weatherSection {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  background-color: var(--CLOUD);
+}
+
+.footer {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background-color: var(--NAVY-BLUE);
+  color: var(--WHITE);
+  text-align: center;
+}
+
+.footerText {
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
