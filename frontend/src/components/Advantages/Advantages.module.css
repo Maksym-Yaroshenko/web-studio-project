@@ -1,0 +1,86 @@
+.advantagesSection {
+  padding-top: 96px;
+  padding-bottom: 96px;
+  background-color: #fff;
+}
+
+.advantagesList {
+  display: flex;
+  flex-direction: column;
+  gap: 72px;
+}
+
+.iconWrapper {
+  display: none; /* За дефолтом на мобільних іконки приховані за макетом */
+}
+
+.advantagesSubtitle {
+  color: var(--NAVY-BLUE, #2e2f42);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.11;
+  letter-spacing: 0.02em;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.advantagesText {
+  color: var(--SLATE, #434455);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) {
+  .advantagesList {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 48px 24px;
+  }
+
+  .advantagesItem {
+    width: calc((100% - 24px) / 2);
+  }
+
+  .advantagesSubtitle {
+    text-align: left;
+  }
+}
+
+/* Desktop */
+@media screen and (min-width: 1158px) {
+  .advantagesSection {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+
+  .advantagesList {
+    gap: 24px;
+  }
+
+  .advantagesItem {
+    width: calc((100% - 72px) / 4);
+  }
+
+  .iconWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 112px;
+    background-color: var(--CLOUD, #f4f4fd);
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+
+  .advantagesSubtitle {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+  .advantagesText {
+    font-weight: 400;
+  }
+}
