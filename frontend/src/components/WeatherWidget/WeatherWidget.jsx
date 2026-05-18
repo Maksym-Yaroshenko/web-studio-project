@@ -7,7 +7,8 @@ export default function WeatherWidget() {
   const [loading, setLoading] = useState(true); // Одразу ставимо true, бо запит піде при старті
   const [error, setError] = useState(null);
 
-  const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
+  const API_KEY =
+    import.meta.env.VITE_WEATHER_API_KEY || "45141d425343558511b25cc54bae7fd5";
 
   const fetchWeather = async (searchParam) => {
     try {
