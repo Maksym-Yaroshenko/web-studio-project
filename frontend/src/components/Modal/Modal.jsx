@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react"; // Додано useRef
 import styles from "./Modal.module.css";
 
 export default function Modal({ onClose }) {
@@ -6,14 +6,18 @@ export default function Modal({ onClose }) {
   const [dynamicResponse, setDynamicResponse] = useState("");
   const [isClosing, setIsClosing] = useState(false);
 
+  // Використовуємо ref для збереження ID таймера між рендерами
+  const timeoutRef = useRef(null);
+
   const handleClose = () => {
-    setIsClosing(true); // Вмикаємо CSS-класи закриття
-    setTimeout(() => {
-      onClose(); // Тільки через 300мс реально знищуємо компонент
+    setIsClosing(true);
+    // Записуємо ідентифікатор таймера в ref
+    timeoutRef.current = setTimeout(() => {
+      onClose();
     }, 300);
   };
 
-  // Закриття по клавіші Escape
+  // Закриття по клавіші Escape та очищення таймера
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") handleClose();
@@ -24,6 +28,11 @@ export default function Modal({ onClose }) {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "";
+
+      // ОБОВ'ЯЗКОВО: Очищаємо таймер, якщо компонент розмонтується до завершення 300мс
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -32,7 +41,6 @@ export default function Modal({ onClose }) {
     if (e.target === e.currentTarget) handleClose();
   };
 
-  // Лаба 3: Модифікація без перезавантаження та перевірка на втрату фокусу (blur)
   const handleEmailBlur = (e) => {
     const value = e.target.value;
     if (value.length > 0 && !value.includes("@")) {
@@ -42,7 +50,6 @@ export default function Modal({ onClose }) {
     }
   };
 
-  // Лаба 3: Динамічне повідомлення без if/else (обробка подій через об'єкт-словник)
   const handleServiceChange = (e) => {
     const value = e.target.value;
     const messages = {
@@ -51,7 +58,6 @@ export default function Modal({ onClose }) {
       dev: "Awesome! Please prepare your technical requirements.",
       default: "",
     };
-    // Працює виключно через маршрутизацію ключа, без умовних операторів
     setDynamicResponse(messages[value] || "");
   };
 
@@ -73,7 +79,6 @@ export default function Modal({ onClose }) {
         </p>
 
         <form>
-          {/* Поле: Ім'я */}
           <div className={styles.reviewFormWrapper}>
             <label className={styles.reviewFormLabel} htmlFor="user-name">
               Name
@@ -92,7 +97,6 @@ export default function Modal({ onClose }) {
             </div>
           </div>
 
-          {/* Поле: Телефон */}
           <div className={styles.reviewFormWrapper}>
             <label className={styles.reviewFormLabel} htmlFor="user-phone">
               Phone
@@ -111,7 +115,6 @@ export default function Modal({ onClose }) {
             </div>
           </div>
 
-          {/* Поле: Email (з валідацією) */}
           <div className={styles.reviewFormWrapper}>
             <label className={styles.reviewFormLabel} htmlFor="user-email">
               Email
@@ -130,7 +133,6 @@ export default function Modal({ onClose }) {
                 <use href="/images/icons.svg#icon-message"></use>
               </svg>
             </div>
-            {/* Повідомлення про помилку з'являється динамічно */}
             {emailError && (
               <span
                 style={{
@@ -145,7 +147,6 @@ export default function Modal({ onClose }) {
             )}
           </div>
 
-          {/* Поле: Селект (Бонус Лаби 3) */}
           <div className={styles.reviewFormWrapper}>
             <label className={styles.reviewFormLabel} htmlFor="service-type">
               Interested In
@@ -163,7 +164,6 @@ export default function Modal({ onClose }) {
                 <option value="dev">Web Development</option>
               </select>
             </div>
-            {/* Динамічний текст */}
             {dynamicResponse && (
               <span
                 style={{
@@ -179,7 +179,6 @@ export default function Modal({ onClose }) {
             )}
           </div>
 
-          {/* Поле: Коментар */}
           <div className={styles.reviewFormCommentWrapper}>
             <label className={styles.reviewFormLabel} htmlFor="user-comment">
               Comment
@@ -192,7 +191,6 @@ export default function Modal({ onClose }) {
             ></textarea>
           </div>
 
-          {/* Чекбокс Privacy Policy */}
           <div className={styles.reviewFormCheckboxWrapper}>
             <input
               className="visually-hidden"
@@ -212,7 +210,7 @@ export default function Modal({ onClose }) {
                 </svg>
               </span>
               <span>
-                I accept the terms and conditions of the{" "}
+                I accept the terms and conditions of the
                 <a className={styles.reviewFormPrivacyLink} href="#">
                   Privacy Policy
                 </a>
