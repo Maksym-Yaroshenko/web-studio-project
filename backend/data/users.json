@@ -10,5 +10,11 @@
     "name": "Maksym",
     "email": "yiaroshenko.max@gmail.com",
     "password": "$2b$10$9J1C2k0r.ufyhWgqm.GO1eYvknl1I3zYZ3w.Xd/FpOZKJFjVglhye"
+  },
+  {
+    "id": "1779107105537",
+    "name": "Maksym",
+    "email": "test2@example.com",
+    "password": "$2b$10$EwoVPdck6jJn.ekZYPi8BehhaqZsxirHBx4Is7DxlS6j8v.XUf33C"
   }
 ]
