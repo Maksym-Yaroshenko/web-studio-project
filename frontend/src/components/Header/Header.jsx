@@ -1,14 +1,19 @@
 import { useState } from "react";
 import styles from "./Header.module.css";
 
-export default function Header({ currentPage, setCurrentPage }) {
+export default function Header({
+  currentPage,
+  setCurrentPage,
+  currentUser,
+  onLogout,
+}) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleNavClick = (e, pageName) => {
     e.preventDefault();
     setCurrentPage(pageName);
     setIsMobileMenuOpen(false);
-    document.body.style.overflow = ""; // Відновлюємо скрол при переході
+    document.body.style.overflow = "";
   };
 
   const openMobileMenu = () => {
@@ -60,6 +65,34 @@ export default function Header({ currentPage, setCurrentPage }) {
                 Contacts
               </a>
             </li>
+
+            {/* Навігація авторизації для Tablet/Desktop */}
+            {currentUser ? (
+              <li className="menu-item">
+                <div className={styles.authBlock}>
+                  <span className={styles.userName}>
+                    Hi, {currentUser.name}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={onLogout}
+                    className={styles.logoutBtn}
+                  >
+                    Log Out
+                  </button>
+                </div>
+              </li>
+            ) : (
+              <li className="menu-item">
+                <a
+                  className={`link ${styles.menuLink} ${currentPage === "auth" ? styles.menuLinkActive : ""}`}
+                  href="#auth"
+                  onClick={(e) => handleNavClick(e, "auth")}
+                >
+                  Log In
+                </a>
+              </li>
+            )}
           </ul>
         </nav>
 
@@ -67,17 +100,14 @@ export default function Header({ currentPage, setCurrentPage }) {
           <ul className={`list ${styles.addressMenu}`}>
             <li>
               <a
-                className={`link ${styles.addressMenuLink}`}
+                className={styles.addressMenuLink}
                 href="mailto:info@devstudio.com"
               >
                 info@devstudio.com
               </a>
             </li>
             <li>
-              <a
-                className={`link ${styles.addressMenuLink}`}
-                href="tel:+110001111111"
-              >
+              <a className={styles.addressMenuLink} href="tel:+110001111111">
                 +11 (000) 111-11-11
               </a>
             </li>
@@ -95,7 +125,7 @@ export default function Header({ currentPage, setCurrentPage }) {
         </button>
       </div>
 
-      {/* Мобільне меню */}
+      {/* Мобільне бургер-меню */}
       <div
         className={`${styles.mobileMenuWrapper} ${isMobileMenuOpen ? styles.isOpen : ""}`}
       >
@@ -139,6 +169,37 @@ export default function Header({ currentPage, setCurrentPage }) {
                   Contacts
                 </a>
               </li>
+
+              {/* Авторизація всередині мобільного меню */}
+              {currentUser ? (
+                <li className={styles.mobileMenuItem}>
+                  <div className={styles.mobileAuthWrapper}>
+                    <span className={styles.mobileUserName}>
+                      Hi, {currentUser.name}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        onLogout();
+                        closeMobileMenu();
+                      }}
+                      className={styles.mobileLogoutBtn}
+                    >
+                      Log Out
+                    </button>
+                  </div>
+                </li>
+              ) : (
+                <li className={styles.mobileMenuItem}>
+                  <a
+                    className={`link ${styles.mobileMenuLink} ${currentPage === "auth" ? styles.mobileMenuLinkActive : ""}`}
+                    href="#auth"
+                    onClick={(e) => handleNavClick(e, "auth")}
+                  >
+                    Log In
+                  </a>
+                </li>
+              )}
             </ul>
           </nav>
 
