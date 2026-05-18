@@ -3,8 +3,8 @@ import styles from "./Footer.module.css";
 export default function Footer() {
   return (
     <footer className={styles.footer}>
-      <div className={`container ${styles.footerContainer}`}>
-        <div className={styles.logoWrapper}>
+      <ul className={`container ${styles.footerContainer}`}>
+        <li className={styles.logoWrapper}>
           <a className={`link ${styles.footerLogo}`} href="/">
             Web<span className={styles.footerLogoColor}>Studio</span>
           </a>
@@ -12,9 +12,9 @@ export default function Footer() {
             Increase the flow of customers and sales for your business with
             digital marketing & growth solutions.
           </p>
-        </div>
+        </li>
 
-        <div className={styles.socialsWrapper}>
+        <li className={styles.socialsWrapper}>
           <p className={styles.socialsTitle}>Social media</p>
           <ul className={`list ${styles.socialsList}`}>
             {["instagram", "twitter", "facebook", "linkedin"].map((icon) => (
@@ -27,9 +27,9 @@ export default function Footer() {
               </li>
             ))}
           </ul>
-        </div>
+        </li>
 
-        <div className={styles.subscribeWrapper}>
+        <li className={styles.subscribeWrapper}>
           <p className={styles.socialsTitle}>Subscribe</p>
           <form className={styles.subscribeForm}>
             <label className="visually-hidden" htmlFor="subscribe-email">
@@ -50,8 +50,8 @@ export default function Footer() {
               </svg>
             </button>
           </form>
-        </div>
-      </div>
+        </li>
+      </ul>
     </footer>
   );
 }

@@ -253,3 +253,66 @@
     padding-bottom: 24px;
   }
 }
+
+.authBlock {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.userName {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: var(--IRIS, #4d5ae5);
+}
+
+.logoutBtn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: var(--NAVY-BLUE, #2e2f42);
+  cursor: pointer;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logoutBtn:hover,
+.logoutBtn:focus {
+  color: var(--OCEAN, #404bbf);
+}
+
+.mobileAuthWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mobileUserName {
+  font-family: "Roboto", sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.11;
+  letter-spacing: 0.02em;
+  color: var(--IRIS, #4d5ae5);
+}
+
+.mobileLogoutBtn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.11;
+  letter-spacing: 0.02em;
+  color: var(--NAVY-BLUE, #2e2f42);
+  text-align: left;
+  cursor: pointer;
+}
